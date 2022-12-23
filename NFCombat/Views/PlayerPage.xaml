@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NFCombat.Views.PlayerPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            
+
+            <Entry FontSize="28"
+                    Keyboard="Numeric"
+                   x:Name="PlayerHealth"
+                   Text="{Binding PlayerHealthValue}"></Entry>
+
+
+            <Label FontSize="28"
+               TextColor="DarkOrchid"
+               Text="{Binding Source={x:Reference PlayerHealth},
+                Path=Text,
+                StringFormat='Player Health: {0:F0}'}" 
+               HorizontalOptions="Center"
+               />
+
+
+            <Entry FontSize="28"
+                    Keyboard="Numeric"
+                   x:Name="EnemyHealth"
+                   Text="{Binding EnemyHealthValue}"></Entry>
+
+
+            <Label FontSize="28"
+               TextColor="DarkOrchid"
+               Text="{Binding Source={x:Reference EnemyHealth},
+                Path=Text,
+                StringFormat='Enemy Health: {0:F0}'}" 
+               HorizontalOptions="Center"
+               />
+
+            <Entry FontSize="28"
+                    Keyboard="Numeric"
+                   x:Name="Range"
+                   Text="{Binding RangeValue}"></Entry>
+
+
+            <Label FontSize="28"
+               TextColor="DarkOrchid"
+               Text="{Binding Source={x:Reference Range},
+                Path=Text,
+                StringFormat='Range: {0:F0}'}" 
+               HorizontalOptions="Center"
+               />
+            <Button Text="Fight!"
+                    
+                Clicked="FightClicked"
+                FontSize="46"
+                />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
