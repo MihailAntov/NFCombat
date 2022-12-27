@@ -6,6 +6,11 @@ namespace NFCombat.Models
 {
     internal class Player
     {
+        public Player()
+        {
+            Health = 30;
+
+        }
         public bool IsDualWielding { get; set; }
         public Weapon MainHand { get; set; }
         public Weapon OffHand { get; set; }

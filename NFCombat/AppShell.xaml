@@ -32,9 +32,11 @@
     <TabBar>
         <!--<ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
         <ShellContent Title="Browse" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />-->
+        <ShellContent Title="Fight" Icon="icon_fight.png" ContentTemplate="{DataTemplate local:FightPage}" />
         <ShellContent Title="Player" Icon="icon_player.png" ContentTemplate="{DataTemplate local:PlayerPage}" />
         <ShellContent Title="Enemy" Icon="icon_enemy.png" ContentTemplate="{DataTemplate local:EnemyPage}" />
         <ShellContent Title="Items" Icon="icon_items.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
+        
     </TabBar>
 
     <!--

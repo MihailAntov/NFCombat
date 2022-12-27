@@ -4,9 +4,20 @@
              x:Class="NFCombat.Views.EnemyPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Enemy"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label FontSize="28"
+               TextColor="DarkOrchid"
+                   
+               Text="{Binding Source={x:Reference EnemyHealth},
+                Path=Text,
+                StringFormat='Enemy Health:'}" 
+               HorizontalOptions="Center"
+               />
+
+            <Entry FontSize="28"
+                    Keyboard="Numeric"
+                   x:Name="EnemyHealth"
+                   HorizontalTextAlignment="Center"
+                   Text="{Binding EnemyHealthValue}"></Entry>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

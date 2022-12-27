@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NFCombat.Views.FightPage">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Grid>
+                <Label Grid.Column="0" Grid.Row="0" Text="Player HP:"
+               
+               TextColor="DarkOrchid"
+               FontSize="24"
+               HorizontalOptions="Center"
+        />
+                <Label Grid.Column="0" Grid.Row="1" Text="30"
+               x:Name="PlayerHealthValue"
+               TextColor="DarkOrchid"
+               FontSize="36"
+               HorizontalOptions="Center"
+        />
+                <Label Grid.Column="1" Grid.Row="0"  Text="Enemy HP:"
+               
+               TextColor="DarkOrchid"
+               FontSize="24"
+               HorizontalOptions="Center"
+                       
+        />
+                <Label Grid.Column="1" Grid.Row="1" Text="10"
+               x:Name="EnemyHealthValue"
+               TextColor="DarkOrchid"
+               FontSize="36"
+               HorizontalOptions="Center"
+                       
+        />
+            </Grid>
+
+            <Label   Text="Range:"
+               TextColor="DarkOrchid"
+               FontSize="24"
+               HorizontalOptions="Center"
+                       
+        />
+            <Label Text="12"
+               x:Name="RangeValue"
+               TextColor="DarkOrchid"
+               FontSize="36"
+               HorizontalOptions="Center"
+                       
+        />
+            
+            <Button Text="FIGHT"
+                    TextColor="White"
+                    
+                    Clicked="FightClicked"
+                    VerticalOptions="End"
+                    FontSize="36"
+                    />
+
+            <!--<Label Text="Range:"/>
+            <Slider x:Name="IncrementSlider"
+                Margin="5,0"
+                Maximum="10"
+                Minimum="1"
+                Value="{Binding SliderValue}"
+                />
+
+    <Label FontSize="28"
+               TextColor="DarkOrchid"
+               Text="{Binding Source={x:Reference IncrementSlider},
+                Path=Value,
+                StringFormat='Increment: {0:F0}'}" 
+               HorizontalOptions="Center"
+               />
+    <Button Text="Increment!"
+                Clicked="IncrementCounterClicked"
+                FontSize="46"
+                />-->
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
