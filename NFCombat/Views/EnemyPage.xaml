@@ -7,17 +7,15 @@
             <Label FontSize="28"
                TextColor="DarkOrchid"
                    
-               Text="{Binding Source={x:Reference EnemyHealth},
-                Path=Text,
-                StringFormat='Enemy Health:'}" 
+               Text="Enemy Health:" 
                HorizontalOptions="Center"
                />
-
+            
             <Entry FontSize="28"
                     Keyboard="Numeric"
                    x:Name="EnemyHealth"
                    HorizontalTextAlignment="Center"
-                   Text="{Binding EnemyHealthValue}"></Entry>
+                   Text="{Binding EnemyHealth}"></Entry>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

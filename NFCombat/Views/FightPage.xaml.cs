@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using NFCombat.Models;
+using NFCombat.ViewModels;
+
+
 
 namespace NFCombat.Views
 {
@@ -16,42 +19,34 @@ namespace NFCombat.Views
         public FightPage()
         {
             InitializeComponent();
-            BindingContext = this;
-            Fight.Player = new Player();
-            Fight.Enemy = new Enemy();
-            Fight.Range = 12;            
-            
+            BindingContext = BaseViewModel.Instance();
+            Fight = BaseViewModel.Instance().Fight;
         }
 
 
-        public int PlayerHealth { get { return Fight.Player.Health; } }
-        public int EnemyHealth { get { return Fight.Enemy.Health; } }
-        public int Range { get { return Fight.Range; } }
 
-       
+        public Fight Fight;
 
         private void FightClicked(object sender, EventArgs e)
         {
-            
-            Fight.FightRound();
-            PlayerHealthValue.Text = PlayerHealth.ToString();
-            EnemyHealthValue.Text = EnemyHealth.ToString();
-            RangeValue.Text = Range.ToString();
-            
-            if (PlayerHealth == Fight.MinHealth)
+
+            BaseViewModel.Instance().FightRound();
+            if (PlayerHealth.Text == Fight.MinHealth.ToString())
             {
                 DisplayAlert("Defeat!", "You have died.", "Okay");
             }
 
-            if (EnemyHealth == 0)
-            {
-                DisplayAlert("Victory!", "You have won!", "Okay");
-            }
+            //if (EnemyHealth == 0)
+            //{
+            //    DisplayAlert("Victory!", "You have won!", "Okay");
+            //}
+
+
 
         }
 
-        
 
-        
+
+
     }
 }

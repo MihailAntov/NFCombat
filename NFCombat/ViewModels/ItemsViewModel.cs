@@ -9,13 +9,13 @@ using Xamarin.Forms;
 
 namespace NFCombat.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
-    {
-        public ItemsViewModel()
-        {
+    //public class ItemsViewModel : BaseViewModel
+    //{
+    //    public ItemsViewModel()
+    //    {
             
-        }
+    //    }
 
         
-    }
+    //}
 }

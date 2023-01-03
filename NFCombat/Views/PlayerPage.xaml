@@ -5,28 +5,34 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center">
 
-            <Label FontSize="28"
+            <!--<Label FontSize="28"
                TextColor="DarkOrchid"
                    
                Text="{Binding Source={x:Reference PlayerHealth},
                 Path=Text,
                 StringFormat='Player Health:'}" 
                HorizontalOptions="Center"
+               />-->
+            <Label FontSize="28"
+               TextColor="DarkOrchid"
+                   
+               Text="Player Health:" 
+               HorizontalOptions="Center"
                />
-            
+
             <Entry FontSize="28"
                     Keyboard="Numeric"
                    x:Name="PlayerHealth"
                    HorizontalTextAlignment="Center"
-                   Text="{Binding PlayerHealthValue}"></Entry>
-
-            
-
-            
+                   Text="{Binding PlayerHealth}"></Entry>
 
 
-            
-            
+
+
+
+
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

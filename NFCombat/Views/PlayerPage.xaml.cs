@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using NFCombat.Models;
 using NFCombat.Views;
+using NFCombat.ViewModels;
 
 
 namespace NFCombat.Views
@@ -16,32 +17,20 @@ namespace NFCombat.Views
     public partial class PlayerPage : ContentPage
     {
         //private int count = 0;
-        
+
         public PlayerPage()
         {
             InitializeComponent();
-            BindingContext = this;
-           
-        }
+            
+            BindingContext = BaseViewModel.Instance();
 
 
-        private int _playerHealthValue = Fight.Player.Health;
-        public int PlayerHealthValue
-        {
-            get => _playerHealthValue;
-            set
-            {
-                if (value != _playerHealthValue)
-                {
-                    _playerHealthValue = value;
-                    Fight.Player.Health = _playerHealthValue;
-                    OnPropertyChanged(nameof(PlayerHealthValue));
-                }
-            }
         }
 
         
 
-        
+
+
+
     }
 }

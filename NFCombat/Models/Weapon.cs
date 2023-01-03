@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NFCombat.Models
 {
-    internal class Weapon
+    public class Weapon
     {
         public char Accuracy { get; set; }
         public int DmgDice { get; set; }

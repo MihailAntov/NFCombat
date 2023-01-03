@@ -2,6 +2,7 @@
 using NFCombat.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
@@ -10,37 +11,79 @@ namespace NFCombat.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        //public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
-
-        bool isBusy = false;
-        public bool IsBusy
+        public static BaseViewModel viewModel;
+        public Fight Fight { get; set; }
+        public static BaseViewModel Instance()
         {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
+            if(viewModel == null)
+            {
+                viewModel = new BaseViewModel();
+                viewModel.Fight = new Fight(new Player(), new Enemy());
+            }
+            return viewModel;
         }
 
-        string title = string.Empty;
-        public string Title
+
+        public int PlayerHealth
         {
-            get { return title; }
-            set { SetProperty(ref title, value); }
+            get
+            {
+                return this.Fight.Player.Health;
+            }
+            set
+            {
+                if (this.Fight.Player.Health != value)
+                {
+                    this.Fight.Player.Health = value;
+                    OnPropertyChanged(nameof(Fight));
+
+                }
+            }
         }
 
-        protected bool SetProperty<T>(ref T backingStore, T value,
-            [CallerMemberName] string propertyName = "",
-            Action onChanged = null)
+        public int Range
         {
-            if (EqualityComparer<T>.Default.Equals(backingStore, value))
-                return false;
-
-            backingStore = value;
-            onChanged?.Invoke();
-            OnPropertyChanged(propertyName);
-            return true;
+            get
+            {
+                return this.Fight.Range;
+            }
+            set
+            {
+                if(this.Fight.Range != value)
+                {
+                    this.Fight.Range = value;
+                    OnPropertyChanged(nameof(Fight));
+                }
+            }
         }
 
-        #region INotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
+        public int EnemyHealth
+        {
+            get
+            {
+                return this.Fight.Enemy.Health;
+            }
+            set
+            {
+                if (this.Fight.Enemy.Health != value)
+                {
+                    this.Fight.Enemy.Health = value;
+                    OnPropertyChanged(nameof(Fight));
+                }
+            }
+        }
+
+        public void FightRound()
+        {
+            Fight.FightRound();
+            OnPropertyChanged(nameof(Fight));
+            //OnPropertyChanged(nameof(EnemyHealthValue));
+            //OnPropertyChanged(nameof(RangeValue));
+        }
+
+
+    #region INotifyPropertyChanged
+    public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             var changed = PropertyChanged;

@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
              x:Class="NFCombat.Views.FightPage">
+    
     <ContentPage.Content>
         <StackLayout>
-
+            
             <Grid>
                 <Label Grid.Column="0" Grid.Row="0" Text="Player HP:"
                
@@ -12,12 +14,23 @@
                FontSize="24"
                HorizontalOptions="Center"
         />
-                <Label Grid.Column="0" Grid.Row="1" Text="30"
-               x:Name="PlayerHealthValue"
+                <Label Grid.Column="0" Grid.Row="1" 
+                       x:Name="PlayerHealth" 
+                       Text="{Binding Fight.Player.Health}"
+                       
                TextColor="DarkOrchid"
                FontSize="36"
                HorizontalOptions="Center"
         />
+                
+                
+                <!--<Label FontSize="28"
+               TextColor="DarkOrchid"
+               Text="{Binding Source={x:Reference IncrementSlider},
+                Path=Value,
+                StringFormat='Increment: {0:F0}'}" 
+               HorizontalOptions="Center"
+               />-->
                 <Label Grid.Column="1" Grid.Row="0"  Text="Enemy HP:"
                
                TextColor="DarkOrchid"
@@ -25,7 +38,7 @@
                HorizontalOptions="Center"
                        
         />
-                <Label Grid.Column="1" Grid.Row="1" Text="10"
+                <Label Grid.Column="1" Grid.Row="1" Text="{Binding Fight.Enemy.Health}"
                x:Name="EnemyHealthValue"
                TextColor="DarkOrchid"
                FontSize="36"
@@ -40,7 +53,7 @@
                HorizontalOptions="Center"
                        
         />
-            <Label Text="12"
+            <Label Text="{Binding Fight.Range}"
                x:Name="RangeValue"
                TextColor="DarkOrchid"
                FontSize="36"
@@ -64,13 +77,6 @@
                 Value="{Binding SliderValue}"
                 />
 
-    <Label FontSize="28"
-               TextColor="DarkOrchid"
-               Text="{Binding Source={x:Reference IncrementSlider},
-                Path=Value,
-                StringFormat='Increment: {0:F0}'}" 
-               HorizontalOptions="Center"
-               />
     <Button Text="Increment!"
                 Clicked="IncrementCounterClicked"
                 FontSize="46"

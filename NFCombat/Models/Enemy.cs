@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NFCombat.Models
 {
-    internal class Enemy
+    public class Enemy
     {
         public Enemy()
         {
