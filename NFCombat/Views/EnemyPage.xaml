@@ -4,6 +4,22 @@
              x:Class="NFCombat.Views.EnemyPage">
     <ContentPage.Content>
         <StackLayout>
+
+            
+            <Picker x:Name="enemyPicker" Title="Select an enemy" ItemsSource="{Binding Fight.Enemies}" ItemDisplayBinding="{Binding Name}" SelectedIndex="{Binding SelectedEnemy}"/>
+
+            
+            <Label FontSize="28"
+               TextColor="DarkOrchid"
+                  
+               Text="Name:" 
+               HorizontalOptions="Center"
+               />
+
+            <Entry FontSize="28"
+                   x:Name="EnemyName"
+                   HorizontalTextAlignment="Center"
+                   Text="{Binding EnemyName}"></Entry>
             <Label FontSize="28"
                TextColor="DarkOrchid"
                    

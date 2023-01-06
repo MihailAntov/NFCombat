@@ -18,6 +18,6 @@ namespace NFCombat.Models
         
         public int Health { get; set; }
 
-        
+        //private int PlayerMeleeAtt { get { return (int)Math.Ceiling(Player.Health / 10.0); } }
     }
 }

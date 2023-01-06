@@ -6,15 +6,29 @@
     
     <ContentPage.Content>
         <StackLayout>
-            
+
+            <Label   Text="Enemies:"
+               TextColor="DarkOrchid"
+               FontSize="24"
+               HorizontalOptions="Center"
+                       
+        />
+            <Entry  Keyboard="Numeric" Text="{Binding EnemyCount}"
+               x:Name="EnemyCountValue"
+               TextColor="DarkOrchid"
+               FontSize="36"
+               HorizontalOptions="Center"
+                       
+        />
             <Grid>
-                <Label Grid.Column="0" Grid.Row="0" Text="Player HP:"
+
+                <Label Grid.Column="0" Grid.Row="2" Text="Player HP:"
                
                TextColor="DarkOrchid"
                FontSize="24"
                HorizontalOptions="Center"
         />
-                <Label Grid.Column="0" Grid.Row="1" 
+                <Label Grid.Column="0" Grid.Row="3" 
                        x:Name="PlayerHealth" 
                        Text="{Binding Fight.Player.Health}"
                        
@@ -22,23 +36,17 @@
                FontSize="36"
                HorizontalOptions="Center"
         />
+
                 
                 
-                <!--<Label FontSize="28"
-               TextColor="DarkOrchid"
-               Text="{Binding Source={x:Reference IncrementSlider},
-                Path=Value,
-                StringFormat='Increment: {0:F0}'}" 
-               HorizontalOptions="Center"
-               />-->
-                <Label Grid.Column="1" Grid.Row="0"  Text="Enemy HP:"
+                <Label Grid.Column="1" Grid.Row="2"  Text="Enemy HP:"
                
                TextColor="DarkOrchid"
                FontSize="24"
                HorizontalOptions="Center"
                        
         />
-                <Label Grid.Column="1" Grid.Row="1" Text="{Binding Fight.Enemy.Health}"
+                <Label Grid.Column="1" Grid.Row="3" Text="{Binding Fight.Enemy.Health}"
                x:Name="EnemyHealthValue"
                TextColor="DarkOrchid"
                FontSize="36"
@@ -53,7 +61,7 @@
                HorizontalOptions="Center"
                        
         />
-            <Label Text="{Binding Fight.Range}"
+            <Entry  Keyboard="Numeric" Text="{Binding Range}"
                x:Name="RangeValue"
                TextColor="DarkOrchid"
                FontSize="36"

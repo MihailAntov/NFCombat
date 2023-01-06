@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
 
 namespace NFCombat.ViewModels
 {

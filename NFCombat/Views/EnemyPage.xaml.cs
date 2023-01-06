@@ -21,5 +21,7 @@ namespace NFCombat.Views
             BindingContext = BaseViewModel.Instance();
             
         }
+
+        
     }
 }
