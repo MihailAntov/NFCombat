@@ -22,6 +22,26 @@ namespace NFCombat.Views
             
         }
 
-        
+        private void PrevEnemy(object sender, EventArgs e)
+        {
+            BaseViewModel.Instance().PrevEnemy();
+        }
+
+        private void NextEnemy(object sender, EventArgs e)
+        {
+            BaseViewModel.Instance().NextEnemy();
+        }
+
+        private void AddEnemy(object sender, EventArgs e)
+        {
+            BaseViewModel.Instance().AddEnemy();
+        }
+
+        private void RemoveEnemy(object sender, EventArgs e)
+        {
+            BaseViewModel.Instance().RemoveEnemy();
+        }
+
+
     }
 }

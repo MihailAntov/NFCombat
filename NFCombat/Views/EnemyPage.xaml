@@ -6,8 +6,17 @@
         <StackLayout>
 
             
-            <Picker x:Name="enemyPicker" Title="Select an enemy" ItemsSource="{Binding Fight.Enemies}" ItemDisplayBinding="{Binding Name}" SelectedIndex="{Binding SelectedEnemy}"/>
+            <!--<Picker x:Name="enemyPicker" Title="Select an enemy" ItemsSource="{Binding Enemies}" ItemDisplayBinding="{Binding Name}" SelectedIndex="{Binding SelectedEnemy}"/>-->
 
+
+            <Button Text="Add" HorizontalOptions="Center" Clicked="AddEnemy" BackgroundColor="MediumPurple"></Button>
+            
+            <Grid>
+                <Button Grid.Column="0"  Text="Previous" IsEnabled="{Binding HasPrevEnemies}" Clicked="PrevEnemy" BackgroundColor="MediumPurple"></Button>
+                <Label Grid.Column="1" Grid.ColumnSpan="2"  Text="{Binding SelectionDisplay}" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                <Button Grid.Column="3"  Text="Next" IsEnabled="{Binding HasNextEnemies}" Clicked="NextEnemy" BackgroundColor="MediumPurple"></Button>
+            </Grid>
+            <Button Text="Remove" HorizontalOptions="Center" IsEnabled="{Binding CanRemove}" Clicked="RemoveEnemy" BackgroundColor="MediumPurple"></Button>
             
             <Label FontSize="28"
                TextColor="DarkOrchid"
@@ -32,6 +41,36 @@
                    x:Name="EnemyHealth"
                    HorizontalTextAlignment="Center"
                    Text="{Binding EnemyHealth}"></Entry>
+
+            <Label FontSize="28"
+               TextColor="DarkOrchid"
+                   
+               Text="Mainhand Accuracy:" 
+               HorizontalOptions="Center"
+               />
+
+            <Picker FontSize="28"
+                    
+                   x:Name="EnemyMHAccuracy"
+                    Title="Select accuracy:"
+                   HorizontalTextAlignment="Center"
+                   SelectedItem="{Binding SetEnemyMHAcc}" >
+                <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:Char}">
+                        <x:Char>S</x:Char>
+                        <x:Char>A</x:Char>
+                        <x:Char>B</x:Char>
+                        <x:Char>C</x:Char>
+                        <x:Char>D</x:Char>
+                        <x:Char>E</x:Char>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label Text="{Binding Fight.EnemyAvgDamage}"/>
+
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

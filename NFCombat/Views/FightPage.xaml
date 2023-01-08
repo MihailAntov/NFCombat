@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <StackLayout>
 
-            <Label   Text="Enemies:"
+            <!--<Label   Text="Enemies:"
                TextColor="DarkOrchid"
                FontSize="24"
                HorizontalOptions="Center"
@@ -19,16 +19,40 @@
                FontSize="36"
                HorizontalOptions="Center"
                        
-        />
-            <Grid>
+        />-->
 
-                <Label Grid.Column="0" Grid.Row="2" Text="Player HP:"
+
+            <Grid>
+                <Label Grid.Column="0" Grid.Row="0" Text="Player HP:"
                
                TextColor="DarkOrchid"
                FontSize="24"
                HorizontalOptions="Center"
         />
-                <Label Grid.Column="0" Grid.Row="3" 
+                
+
+                <Label Grid.Column="1" Grid.Row="3"  Text="Enemy HP:"
+               
+               TextColor="DarkOrchid"
+               FontSize="24"
+               HorizontalOptions="Center"
+                       
+        />
+
+                <Label Grid.Row="0" Grid.Column="1"  Text="Range:"
+               TextColor="DarkOrchid"
+               FontSize="24"
+               HorizontalOptions="Center"
+                       
+        />
+                <Entry Grid.Row="1" Grid.Column="1" Keyboard="Numeric" Text="{Binding Range}"
+               x:Name="RangeValue"
+               TextColor="DarkOrchid"
+               FontSize="36"
+               HorizontalOptions="Center"
+                       
+        />
+                <Label Grid.Column="0" Grid.Row="1" 
                        x:Name="PlayerHealth" 
                        Text="{Binding Fight.Player.Health}"
                        
@@ -37,38 +61,42 @@
                HorizontalOptions="Center"
         />
 
-                
-                
-                <Label Grid.Column="1" Grid.Row="2"  Text="Enemy HP:"
-               
-               TextColor="DarkOrchid"
-               FontSize="24"
-               HorizontalOptions="Center"
-                       
-        />
-                <Label Grid.Column="1" Grid.Row="3" Text="{Binding Fight.Enemy.Health}"
-               x:Name="EnemyHealthValue"
-               TextColor="DarkOrchid"
-               FontSize="36"
-               HorizontalOptions="Center"
-                       
-        />
             </Grid>
 
-            <Label   Text="Range:"
+
+            <Grid>
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Fight.Enemies[0].Name, StringFormat='{0} :'}"
+               x:Name="EnemyOneHealthValue"
                TextColor="DarkOrchid"
                FontSize="24"
-               HorizontalOptions="Center"
-                       
-        />
-            <Entry  Keyboard="Numeric" Text="{Binding Range}"
-               x:Name="RangeValue"
+               HorizontalOptions="Center" VerticalOptions="Center"         />
+                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding Fight.Enemies[0].Health}" TextColor="DarkOrchid" FontSize="36" HorizontalOptions="Start" />
+                </Grid>
+            <Grid>
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Fight.Enemies[1].Name, StringFormat='{0} :'}"
+               x:Name="EnemyTwoHealthValue"
                TextColor="DarkOrchid"
-               FontSize="36"
-               HorizontalOptions="Center"
-                       
-        />
-            
+               FontSize="24"
+               HorizontalOptions="Center" VerticalOptions="Center"         />
+                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Fight.Enemies[1].Health}" TextColor="DarkOrchid" FontSize="36" HorizontalOptions="Start" />
+            </Grid>
+            <Grid>
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Fight.Enemies[2].Name, StringFormat='{0} :'}"
+               x:Name="EnemyThreeHealthValue"
+               TextColor="DarkOrchid"
+               FontSize="24"
+               HorizontalOptions="Center" VerticalOptions="Center"         />
+                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Fight.Enemies[2].Health}" TextColor="DarkOrchid" FontSize="36" HorizontalOptions="Start" />
+            </Grid>
+            <Grid>
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Fight.Enemies[3].Name, StringFormat='{0} :'}"
+               x:Name="EnemyFourHealthValue"
+               TextColor="DarkOrchid"
+               FontSize="24"
+               HorizontalOptions="Center" VerticalOptions="Center"         />
+                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Fight.Enemies[3].Health}" TextColor="DarkOrchid" FontSize="36" HorizontalOptions="Start" />
+            </Grid>
+
             <Button Text="FIGHT"
                     TextColor="White"
                     

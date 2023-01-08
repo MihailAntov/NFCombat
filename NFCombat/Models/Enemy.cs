@@ -10,6 +10,21 @@ namespace NFCombat.Models
         {
             Health = 10;
             Name = name;
+            MainHand = new Weapon();
+            OffHand = new Weapon();
+            IsDualWielding = false;
+        }
+
+        public double AverageDamage 
+        { 
+            get
+            {
+                if(IsDualWielding)
+                {
+                    return this.MainHand.AverageDamage + this.OffHand.AverageDamage;
+                }
+                return this.MainHand.AverageDamage;
+            }
         }
         public Weapon MainHand { get; set; }
         public Weapon OffHand { get; set; }

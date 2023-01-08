@@ -62,37 +62,55 @@ namespace NFCombat.ViewModels
             }
         }
 
-        public int EnemyCount
+        //public int EnemyCount
+        //{
+        //    get
+        //    {
+        //        return this.Fight.EnemyCount;
+        //    }
+            //set
+            //{
+            //    if (this.Fight.EnemyCount != value)
+            //    {
+            //        this.Fight.EnemyCount = value;
+            //        //while (this.Fight.Enemies.Count != this.Fight.EnemyCount)
+            //        //{
+            //        //    if (this.Fight.EnemyCount > this.Fight.Enemies.Count)
+            //        //    {
+            //        //        this.Fight.Enemies.Add(new Enemy("Enemy"));
+            //        //    }
+            //        //    else if (this.Fight.EnemyCount < this.Fight.Enemies.Count)
+            //        //    {
+            //        //        this.Fight.Enemies.RemoveAt(this.Fight.Enemies.Count - 1);
+            //        //    }
+            //        //}
+
+
+
+            //        OnPropertyChanged(nameof(Fight));
+            //        OnPropertyChanged(nameof(Enemies));
+            //        OnPropertyChanged(nameof(HasNextEnemies));
+            //        OnPropertyChanged(nameof(HasPrevEnemies));
+            //        OnPropertyChanged(nameof(SelectionDisplay));
+
+            //    }
+            //}
+        //}
+        public bool HasPrevEnemies
         {
             get
             {
-                return this.Fight.EnemyCount;
-            }
-            set
-            {
-                if (this.Fight.EnemyCount != value)
-                {
-                    this.Fight.EnemyCount = value;
-                    while (this.Fight.Enemies.Count != this.Fight.EnemyCount)
-                    {
-                        if (this.Fight.EnemyCount > this.Fight.Enemies.Count)
-                        {
-                            this.Fight.Enemies.Add(new Enemy("Enemy"));
-                        }
-                        else if (this.Fight.EnemyCount < this.Fight.Enemies.Count)
-                        {
-                            this.Fight.Enemies.RemoveAt(this.Fight.Enemies.Count - 1);
-                        }
-                    }
-
-
-
-                    OnPropertyChanged(nameof(Fight));
-                    OnPropertyChanged(nameof(Enemies));
-                }
+                return (this.Fight.Enemies.Count > 1 && this.Fight.CurrentEnemy > 0);
             }
         }
 
+        public bool HasNextEnemies
+        {
+            get
+            {
+                return (this.Fight.Enemies.Count > 1 && this.Fight.CurrentEnemy < this.Fight.Enemies.Count - 1);
+            }
+        }
         public ObservableCollection<Enemy> Enemies
         {
             get
@@ -121,9 +139,7 @@ namespace NFCombat.ViewModels
                     OnPropertyChanged(nameof(Fight));
                     OnPropertyChanged(nameof(EnemyHealth));
                     OnPropertyChanged(nameof(EnemyName));
-                    OnPropertyChanged(nameof(Fight.Enemies));
-
-
+                    OnPropertyChanged(nameof(Enemies));
                 }
 
 
@@ -131,7 +147,7 @@ namespace NFCombat.ViewModels
             }
         }
 
-
+        
         public int EnemyHealth
         {
             get
@@ -148,9 +164,6 @@ namespace NFCombat.ViewModels
                 }
             }
         }
-
-
-
         public string EnemyName
         {
             get
@@ -162,15 +175,47 @@ namespace NFCombat.ViewModels
                 if (this.Fight.Enemies[SelectedEnemy].Name != value)
                 {
                     this.Fight.Enemies[SelectedEnemy].Name = value;
-                    //COLLECTION CHANGED 
-                    
+                    OnPropertyChanged(nameof(EnemyName));
+                    OnPropertyChanged(nameof(Fight));
 
                 }
 
 
             }
         }
-
+        public char SetEnemyMHAcc
+        {
+            get
+            {
+                return this.Fight.Enemies[this.Fight.CurrentEnemy].MainHand.Accuracy;
+            }
+            set
+            {
+                if(this.Fight.Enemies[this.Fight.CurrentEnemy].MainHand.Accuracy != value)
+                {
+                    this.Fight.Enemies[this.Fight.CurrentEnemy].MainHand.Accuracy = value;
+                    //OnPropertyChanged(nameof(SetEnemyMHAcc));
+                    //OnPropertyChanged(nameof(EnemyAverageDamage));
+                    OnPropertyChanged(nameof(Fight));
+                    
+                }
+            }
+        }
+        public string EnemyAverageDamage
+        {
+            get
+            {
+                return this.Fight.EnemyAvgDamage;
+            }
+            
+        }
+        public string SelectionDisplay
+        {
+            get
+            {
+                return $"{1 + this.Fight.CurrentEnemy} / {this.Fight.Enemies.Count}";
+            }
+        }
         public void FightRound()
         {
             Fight.FightRound();
@@ -178,6 +223,79 @@ namespace NFCombat.ViewModels
 
             //OnPropertyChanged(nameof(EnemyHealthValue));
             //OnPropertyChanged(nameof(RangeValue));
+        }
+
+        
+        public void PrevEnemy()
+        {
+            this.Fight.CurrentEnemy--;
+            if(this.Fight.CurrentEnemy < 0)
+            {
+                this.Fight.CurrentEnemy = 0;
+            }
+            OnPropertyChanged(nameof(SelectedEnemy));
+            OnPropertyChanged(nameof(EnemyHealth));
+            OnPropertyChanged(nameof(EnemyName));
+            OnPropertyChanged(nameof(SelectionDisplay));
+            OnPropertyChanged(nameof(HasPrevEnemies));
+            OnPropertyChanged(nameof(HasNextEnemies));
+        }
+
+        public void NextEnemy()
+        {
+            this.Fight.CurrentEnemy++;
+            if (this.Fight.CurrentEnemy > this.Fight.Enemies.Count -1)
+            {
+                this.Fight.CurrentEnemy = this.Fight.Enemies.Count - 1;
+            }
+            OnPropertyChanged(nameof(SelectedEnemy));
+            OnPropertyChanged(nameof(EnemyHealth));
+            OnPropertyChanged(nameof(EnemyName));
+            OnPropertyChanged(nameof(SelectionDisplay));
+            OnPropertyChanged(nameof(HasPrevEnemies));
+            OnPropertyChanged(nameof(HasNextEnemies));
+        }
+
+        public void AddEnemy()
+        {
+            this.Fight.Enemies.Insert(this.Fight.CurrentEnemy+1, new Enemy("Enemy"));
+            this.Fight.CurrentEnemy++;
+            OnPropertyChanged(nameof(SelectedEnemy));
+            OnPropertyChanged(nameof(EnemyHealth));
+            OnPropertyChanged(nameof(EnemyName));
+            OnPropertyChanged(nameof(SelectionDisplay));
+            OnPropertyChanged(nameof(HasPrevEnemies));
+            OnPropertyChanged(nameof(HasNextEnemies));
+            OnPropertyChanged(nameof(CanRemove));
+            OnPropertyChanged(nameof(Fight));
+            
+
+        }
+        public bool CanRemove
+        {
+            get
+            {
+                return this.Fight.Enemies.Count > 1;
+            }
+        }
+        public void RemoveEnemy()
+        {
+            this.Fight.Enemies.RemoveAt(this.Fight.CurrentEnemy);
+            if(this.Fight.CurrentEnemy >= this.Fight.Enemies.Count)
+            {
+                this.Fight.CurrentEnemy--;
+            }
+
+            OnPropertyChanged(nameof(SelectedEnemy));
+            OnPropertyChanged(nameof(EnemyHealth));
+            OnPropertyChanged(nameof(EnemyName));
+            OnPropertyChanged(nameof(SelectionDisplay));
+            OnPropertyChanged(nameof(HasPrevEnemies));
+            OnPropertyChanged(nameof(HasNextEnemies));
+            OnPropertyChanged(nameof(CanRemove));
+            OnPropertyChanged(nameof(Fight));
+            
+
         }
 
 
@@ -192,8 +310,8 @@ namespace NFCombat.ViewModels
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
-
-        public delegate void NotifyCollectionChangedEventHandler(object sender, NotifyCollectionChangedEventArgs e);
+        
+        
 
 
 

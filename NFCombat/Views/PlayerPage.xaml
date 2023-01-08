@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NFCombat.Views.PlayerPage">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center">
+        <StackLayout>
 
             <!--<Label FontSize="28"
                TextColor="DarkOrchid"

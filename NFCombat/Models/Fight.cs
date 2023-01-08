@@ -22,16 +22,23 @@ namespace NFCombat.Models
         public  int MinHealth { get { return _minHealth; } set { _minHealth = value; } }
         private  int _minHealth = 0;
 
-        private int _enemyCount = 1;
-        public int EnemyCount { get { return _enemyCount; } set { _enemyCount = value; } }
+        //private int _enemyCount = 1;
+        //public int EnemyCount { get { return _enemyCount; } set { _enemyCount = value; } }
         public int CurrentEnemy { get { return _currentEnemy; } set { _currentEnemy = value; } }
         private int _currentEnemy = 0;
         
-        
+        public string EnemyAvgDamage
+        {
+            get 
+            {
+                return $"{Enemies[CurrentEnemy].AverageDamage:f2}";
+            }
+            
+        }
 
         public void FightRound()
         {
-           
+            
 
             
 
